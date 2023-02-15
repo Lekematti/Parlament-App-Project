@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.parlament_app.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_partiesFragment"
+            app:destination="@id/partiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/partiesFragment"
+        android:name="com.example.parlament_app.PartiesFragment"
+        android:label="fragment_parties"
+        tools:layout="@layout/fragment_parties" >
+        <action
+            android:id="@+id/action_partiesFragment_to_membersFragment"
+            app:destination="@id/membersFragment" />
+        <action
+            android:id="@+id/action_partiesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/membersFragment"
+        android:name="com.example.parlament_app.MembersFragment"
+        android:label="fragment_members"
+        tools:layout="@layout/fragment_members" >
+        <action
+            android:id="@+id/action_membersFragment_to_memberInfoFragment"
+            app:destination="@id/memberInfoFragment" />
+        <action
+            android:id="@+id/action_membersFragment_to_partiesFragment"
+            app:destination="@id/partiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberInfoFragment"
+        android:name="com.example.parlament_app.MemberInfoFragment"
+        android:label="fragment_member_info"
+        tools:layout="@layout/fragment_member_info" >
+        <action
+            android:id="@+id/action_memberInfoFragment_to_membersFragment"
+            app:destination="@id/membersFragment" />
+    </fragment>
+</navigation>
