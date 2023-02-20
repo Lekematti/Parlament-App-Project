@@ -13,8 +13,7 @@ abstract class OpsDatabase: RoomDatabase() {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {
-                    instance = Room.databaseBuilder(ParlamentApp.appContext,
-                    OpsDatabase::class.java, "ops_database")
+                    instance = Room.databaseBuilder(MyApp.appContext, OpsDatabase::class.java,"ops_database")
                         .fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }
