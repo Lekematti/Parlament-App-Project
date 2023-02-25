@@ -5,7 +5,7 @@ import androidx.room.Database
 @Database(entities = [OpsLogEntry::class], version = 3, exportSchema = false)
 
 abstract class OpsDatabase: RoomDatabase() {
-    abstract val OpsLogDAO: OpsLogDAO
+    abstract val opsLogDAO: OpsLogDAO
     companion object {
         @Volatile
         private var INSTANCE: OpsDatabase? = null

@@ -14,18 +14,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.Pparties.text = "Parlament parties"
+        binding.Bparties.text = "Parlament parties"
+
 
         fun showRandomMP() {
             randomMP = members
             binding.nameTextView.text = "${randomMP.first} ${randomMP.last}"
             binding.partyTextView.text = randomMP.party
             binding.pmImage.setImageResource(R.drawable.ic_launcher_foreground)
+            binding.recycleparties.text = randomMP.party
         }
 
         showRandomMP()
 
-        binding.button1.setOnClickListener {
+        binding.Bparties.setOnClickListener {
             showRandomMP()
         }
     }
