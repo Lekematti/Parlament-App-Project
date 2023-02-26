@@ -1,6 +1,8 @@
 package com.example.parlament_app
 
 import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
 @Database(entities = [OpsLogEntry::class], version = 3, exportSchema = false)
 
