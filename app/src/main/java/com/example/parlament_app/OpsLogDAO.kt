@@ -3,7 +3,6 @@ package com.example.parlament_app
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-
 @Entity
 data class OpsLogEntry(
     @PrimaryKey(autoGenerate = true)
@@ -12,7 +11,6 @@ data class OpsLogEntry(
     val amount: Int,
     val note: String = ""
     )
-
 
 @Dao
 interface OpsLogDAO {
