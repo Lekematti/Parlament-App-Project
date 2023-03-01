@@ -3,12 +3,12 @@ package com.example.parlament_app
 import androidx.lifecycle.LiveData
 
 object OpsLogRepository {
-    private val dao = OpsDatabase.getInstance().opsLogDAO
-    val logData: LiveData<List<OpsLogEntry>> = dao.getAll()
+    private val dao = OpsDatabase.getInstance().memberOfParliamentDAO
+    val logData: LiveData<List<MemberOfParliament>> = dao.getAll()
 
     suspend fun newOpsLogEntry(amount: Int, noteText: String){
         dao.insert(
-            OpsLogEntry(timestamp = System.currentTimeMillis(), amount = amount, note = noteText)
+            MemberOfParliament(hetekaId = 0,seatNumber = 0, firstname = String(), lastname = String(), party = String())
         )
     }
 }

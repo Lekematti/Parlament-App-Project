@@ -3,13 +3,14 @@ package com.example.parlament_app
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.parlament_app.databinding.ItemPartiesBinding
 
-/*class PartiesAdapter : RecyclerView.Adapter<PartyViewHolder>() {
+class PartiesAdapter : RecyclerView.Adapter<PartyViewHolder>() {
     private val members = ParliamentMembersData.members
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = PartyViewHolderBinding.inflate(inflater, parent, false)
+        val view = ItemPartiesBinding.inflate(inflater, parent, false)
         return PartyViewHolder(view)
     }
 
@@ -22,4 +23,3 @@ import androidx.recyclerview.widget.RecyclerView
         holder.bind(member)
     }
 }
-}*/
