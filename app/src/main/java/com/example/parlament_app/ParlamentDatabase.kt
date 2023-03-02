@@ -4,18 +4,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [MemberOfParliament::class], version = 4, exportSchema = false)
+@Database(entities = [MemberOfParliament::class], version = 5, exportSchema = false)
 
-abstract class OpsDatabase: RoomDatabase() {
+abstract class ParlamentDatabase: RoomDatabase() {
     abstract val memberOfParliamentDAO: MemberOfParliamentDAO
     companion object {
         @Volatile
-        private var INSTANCE: OpsDatabase? = null
-        fun getInstance(): OpsDatabase {
+        private var INSTANCE: ParlamentDatabase? = null
+        fun getInstance(): ParlamentDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {
-                    instance = Room.databaseBuilder(MyApp.appContext, OpsDatabase::class.java,"ops_database")
+                    instance = Room.databaseBuilder(MyApp.appContext, ParlamentDatabase::class.java,"ops_database")
                         .fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }

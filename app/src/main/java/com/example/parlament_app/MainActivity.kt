@@ -13,12 +13,12 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var members: List<MemberOfParliament>
+    //private lateinit var members: List<MemberOfParliament>
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        members = ParliamentMembersData.members
+        //members = ParliamentMembersData.members
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

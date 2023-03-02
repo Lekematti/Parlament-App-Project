@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -33,7 +32,7 @@ class HomeFragment : Fragment() {
         binding.button.setOnClickListener {
             viewModel.readMembers()
         }
-        viewModel.member.observe(viewLifecycleOwner) {
+        viewModel.members.observe(viewLifecycleOwner) {
             println("players changed!!!")
             binding.textView.text = it.joinToString(", ")
         }
@@ -43,12 +42,18 @@ class HomeFragment : Fragment() {
 }
 class MainActivityViewModel: ViewModel() {
     var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
+    var members = ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()
 
     fun readMembers() {
         viewModelScope.launch {
             try {
+                val dao = ParlamentDatabase.getInstance().memberOfParliamentDAO
                 member.value = ParlamentApi.retrofitService.getParlamentList()
                 println("Read members from parlament with great success.")
+                member.value?.forEach {
+                    dao.insert(it)
+                }
+                println("Writen to database")
             } catch (e: Exception) {
                 println("No luck in reading members from parlament: ${e}")
             }

@@ -16,7 +16,7 @@ data class MemberOfParliament (
 )
 @Dao
 interface MemberOfParliamentDAO{
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entry: MemberOfParliament)
     @Query("select * from MemberOfParliament")
     fun getAll(): LiveData<List<MemberOfParliament>>
