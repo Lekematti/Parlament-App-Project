@@ -2,14 +2,12 @@ package com.example.parlament_app
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parlament_app.databinding.ItemPartiesBinding
 
 class PartiesAdapter(val parties: List<String>) : RecyclerView.Adapter<PartyViewHolder>() {
-    //private val members = ParliamentMembersData.members
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = ItemPartiesBinding.inflate(inflater, parent, false)
@@ -21,7 +19,14 @@ class PartiesAdapter(val parties: List<String>) : RecyclerView.Adapter<PartyView
     }
 
     override fun onBindViewHolder(holder: PartyViewHolder, position: Int) {
-        val party = parties[position]
-        holder.bind(party)
+        holder.itemView.findViewById<TextView>(R.id.party_text_view).apply {
+            text = parties[position]
+            setOnClickListener {
+                val action = PartiesFragmentDirections.actionPartiesFragmentToMembersFragment()
+                it.findNavController().navigate(action)
+            }
+        }
     }
 }
+
+

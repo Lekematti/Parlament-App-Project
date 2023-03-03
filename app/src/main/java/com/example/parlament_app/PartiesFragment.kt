@@ -41,6 +41,4 @@ class SecondActivityViewModel: ViewModel() {
     var parties = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
         it.map { it.party }.toSortedSet().toList()
     }
-    //var members = ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()
-
 }

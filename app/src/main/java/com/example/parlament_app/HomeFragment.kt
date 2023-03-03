@@ -27,22 +27,22 @@ class HomeFragment : Fragment() {
         binding.Bparties.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_partiesFragment)
             viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        }
 
-        binding.button.setOnClickListener {
-            viewModel.readMembers()
         }
-        viewModel.members.observe(viewLifecycleOwner) {
-            println("players changed!!!")
-            binding.textView.text = it.joinToString(", ")
-        }
-
         return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.readMembers()
+        viewModel.member.observe(viewLifecycleOwner) {
+            println("member changed")
+        }
     }
 }
 class MainActivityViewModel: ViewModel() {
     var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    var members = ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()
+    //var members = ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()
 
     fun readMembers() {
         viewModelScope.launch {
@@ -53,7 +53,7 @@ class MainActivityViewModel: ViewModel() {
                 member.value?.forEach {
                     dao.insert(it)
                 }
-                println("Writen to database")
+                println("Written to database")
             } catch (e: Exception) {
                 println("No luck in reading members from parlament: ${e}")
             }

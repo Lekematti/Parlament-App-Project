@@ -20,18 +20,13 @@ interface MemberOfParliamentDAO{
     suspend fun insert(entry: MemberOfParliament)
     @Query("select * from MemberOfParliament")
     fun getAll(): LiveData<List<MemberOfParliament>>
-   // @Query("select * from MemberOfParliament where timestamp > :key")
+    //@Query("select * from MemberOfParliament where timestamp > :key")
     //fun getAllSince(key: Long): LiveData<List<MemberOfParliament>>
+    //@Query("SELECT * FROM MembersOfParliament WHERE party = :String")
+    //fun getMembers(party: String): LiveData<List<MemberOfParliament>>
+    //SELECT lastname, firstname from memberofparliament where party
 }
-object ParliamentMembersData {
-    val members = listOf(
-        MemberOfParliament(
-            hetekaId = 1467,
-            seatNumber = 64,
-            lastname = "Huru",
-            firstname = "Petri",
-            party = "ps",
-            minister = false,
-            //pictureUrl = pictureUrl
-        ))
-}
+/* val selectedParty = partiesList[position].partyName
+        // Here you can use the selectedParty variable to retrieve the members of the selected party using a SQL query
+        // For example:
+        val query = "SELECT MembersOfParliament.firstname, MembersOfParliament.lastname FROM MembersOfParliament WHERE MembersOfParliament.party = '$selectedParty'"*/
