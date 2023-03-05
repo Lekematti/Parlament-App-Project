@@ -26,13 +26,13 @@ class HomeFragment : Fragment() {
         // A OnClickListener for the Parties button. Used for moving to the Parties Fragment
         binding.Bparties.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_partiesFragment)
-            viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+            viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
         }
         // A OnClickListener for the Member list button. Used for moving to the MemberList Fragment
         binding.BMemberList.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_memberListFragment)
-            viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+            viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         }
         return binding.root
     }
@@ -47,20 +47,20 @@ class HomeFragment : Fragment() {
 }
 class MainActivityViewModel: ViewModel() {
     var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    //var members = ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()
+    //var members = ParliamentDatabase.getInstance().memberOfParliamentDAO.getAll()
 
     fun readMembers() {
         viewModelScope.launch {
             try {
                 val dao = ParlamentDatabase.getInstance().memberOfParliamentDAO
                 member.value = ParlamentApi.retrofitService.getParlamentList()
-                println("Read members from parlament with great success.")
+                println("Read members from parliament with great success.")
                 member.value?.forEach {
                     dao.insert(it)
                 }
                 println("Written to database")
             } catch (e: Exception) {
-                println("No luck in reading members from parlament: ${e}")
+                println("No luck in reading members from parliament: $e")
             }
         }
     }

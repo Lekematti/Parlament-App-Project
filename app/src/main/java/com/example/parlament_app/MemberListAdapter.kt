@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MemberListAdapter (val members: List<String>) : RecyclerView.Adapter<MemberListAdapter.MemberListViewHolder>() {
+class MemberListAdapter (private val members: List<String>) : RecyclerView.Adapter<MemberListAdapter.MemberListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_member_list,parent,false)
         return MemberListViewHolder(view)
@@ -22,7 +22,5 @@ class MemberListAdapter (val members: List<String>) : RecyclerView.Adapter<Membe
         }
 
     }
-    class MemberListViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-
-    }
+    class MemberListViewHolder (view: View) : RecyclerView.ViewHolder(view)
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +20,7 @@ class MemberListFragment : Fragment() {
         viewModel = MemberListActivityViewModel()
         binding = FragmentMemberListBinding.inflate(layoutInflater)
         binding.RecycleMemberList.layoutManager = LinearLayoutManager(context)
-        viewModel.Members.observe(viewLifecycleOwner){
+        viewModel.members.observe(viewLifecycleOwner){
             binding.RecycleMemberList.adapter = MemberListAdapter(it)
         }
 
@@ -29,7 +30,7 @@ class MemberListFragment : Fragment() {
 }
 class MemberListActivityViewModel: ViewModel() {
     //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    var Members = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
+    var members: LiveData<List<String>> = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
         it.map {"${it.firstname} ${it.lastname} Party: ${it.party}" }.toSortedSet().toList()
     }
 }

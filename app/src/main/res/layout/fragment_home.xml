@@ -8,10 +8,10 @@
 
     <Button
         android:id="@+id/HomeTextView"
+        android:text="-"
         android:layout_width="500dp"
         android:layout_height="150dp"
         android:backgroundTint="#002F6C"
-        android:text=""
         android:textColor="@color/white"
         android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,10 +21,10 @@
 
     <Button
         android:id="@+id/Bparties"
+        android:text="-"
         android:layout_width="150dp"
         android:layout_height="320dp"
         android:backgroundTint="#002F6C"
-        android:text=""
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,10 +35,10 @@
 
     <Button
         android:id="@+id/BMemberList"
+        android:text="-"
         android:layout_width="150dp"
         android:layout_height="320dp"
         android:backgroundTint="#002F6C"
-        android:text=""
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/HomeTextView"
         app:layout_constraintEnd_toEndOf="parent"

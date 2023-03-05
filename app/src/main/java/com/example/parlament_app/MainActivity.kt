@@ -8,7 +8,6 @@ import com.example.parlament_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    //private lateinit var members: List<MemberOfParliament>
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {

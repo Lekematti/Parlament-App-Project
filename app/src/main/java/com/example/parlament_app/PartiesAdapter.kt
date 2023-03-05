@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parlament_app.databinding.ItemPartiesBinding
 
-class PartiesAdapter(val parties: List<String>) : RecyclerView.Adapter<PartiesAdapter.PartiesViewHolder>() {
+class PartiesAdapter(private val parties: List<String>) : RecyclerView.Adapter<PartiesAdapter.PartiesViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PartiesViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_parties, parent, false)
             return PartiesViewHolder(view)
@@ -27,8 +26,5 @@ class PartiesAdapter(val parties: List<String>) : RecyclerView.Adapter<PartiesAd
                 }
             }
         }
-
-        class PartiesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        }
+        class PartiesViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }

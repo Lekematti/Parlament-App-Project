@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parlament_app.databinding.FragmentPartiesBinding
-
 
 class PartiesFragment : Fragment() {
     private lateinit var binding: FragmentPartiesBinding
@@ -22,7 +21,7 @@ class PartiesFragment : Fragment() {
         binding = FragmentPartiesBinding.inflate(layoutInflater)
         binding.recycleparties.setOnClickListener{
             findNavController().navigate(R.id.action_partiesFragment_to_membersFragment)
-            viewModel = ViewModelProvider(this).get(PartiesActivityViewModel::class.java)
+            viewModel = ViewModelProvider(this)[PartiesActivityViewModel::class.java]
         }
         binding.recycleparties.layoutManager = LinearLayoutManager(context)
         viewModel.parties.observe(viewLifecycleOwner){
@@ -33,8 +32,8 @@ class PartiesFragment : Fragment() {
     }
 }
 class PartiesActivityViewModel: ViewModel() {
-    var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    var parties = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
+    //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
+    var parties: LiveData<List<String>> = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
         it.map { it.party }.toSortedSet().toList()
     }
 }

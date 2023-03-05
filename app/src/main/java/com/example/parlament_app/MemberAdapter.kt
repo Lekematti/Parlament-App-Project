@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class MemberAdapter (val members: List<String>) : RecyclerView.Adapter<MemberAdapter.MemberViewHolder>() {
+class MemberAdapter (private val members: List<String>) : RecyclerView.Adapter<MemberAdapter.MemberViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_member,parent,false)
         return MemberViewHolder(view)
@@ -26,6 +26,5 @@ class MemberAdapter (val members: List<String>) : RecyclerView.Adapter<MemberAda
             }
         }
     }
-    class MemberViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    }
+    class MemberViewHolder (view: View) : RecyclerView.ViewHolder(view)
 }
