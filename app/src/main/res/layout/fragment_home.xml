@@ -7,13 +7,44 @@
     tools:context=".HomeFragment">
 
     <Button
-        android:id="@+id/Bparties"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Parties"
+        android:id="@+id/HomeTextView"
+        android:layout_width="500dp"
+        android:layout_height="150dp"
+        android:backgroundTint="#002F6C"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bparties"
+        android:layout_width="150dp"
+        android:layout_height="320dp"
+        android:backgroundTint="#002F6C"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HomeTextView"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <Button
+        android:id="@+id/BMemberList"
+        android:layout_width="150dp"
+        android:layout_height="320dp"
+        android:backgroundTint="#002F6C"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/HomeTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.473" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

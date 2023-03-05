@@ -8,10 +8,16 @@ object ParlamentRepository {
     val logData: LiveData<List<MemberOfParliament>> = dao.getAll()
 
 
-
-    suspend fun newParlamentEntry(amount: Int, noteText: String){
+    suspend fun newParlamentEntry(amount: Int, noteText: String) {
         dao.insert(
-            MemberOfParliament(hetekaId = 0,seatNumber = 0, firstname = String(), lastname = String(), party = String())
+            MemberOfParliament(
+                hetekaId = 0,
+                seatNumber = 0,
+                firstname = String(),
+                lastname = String(),
+                party = String()
+            )
         )
     }
+
 }

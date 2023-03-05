@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import com.example.parlament_app.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
@@ -17,17 +14,25 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: MainActivityViewModel
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         viewModel = MainActivityViewModel()
-        // Inflate the layout for this fragment
+
+        //Text for the buttons on the home screen
+        binding.Bparties.text = "Parties"
+        binding.BMemberList.text = "Member list"
+        binding.HomeTextView.text = "Finnish Parliament App"
+
+        // A OnClickListener for the Parties button. Used for moving to the Parties Fragment
         binding.Bparties.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_partiesFragment)
             viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
+        }
+        // A OnClickListener for the Member list button. Used for moving to the MemberList Fragment
+        binding.BMemberList.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_memberListFragment)
+            viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         }
         return binding.root
     }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_partiesFragment"
             app:destination="@id/partiesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
     </fragment>
     <fragment
         android:id="@+id/partiesFragment"
@@ -32,19 +35,12 @@
         android:label="fragment_members"
         tools:layout="@layout/fragment_members" >
         <action
-            android:id="@+id/action_membersFragment_to_memberInfoFragment"
-            app:destination="@id/memberInfoFragment" />
-        <action
             android:id="@+id/action_membersFragment_to_partiesFragment"
             app:destination="@id/partiesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/memberInfoFragment"
-        android:name="com.example.parlament_app.MemberInfoFragment"
-        android:label="fragment_member_info"
-        tools:layout="@layout/fragment_member_info" >
-        <action
-            android:id="@+id/action_memberInfoFragment_to_membersFragment"
-            app:destination="@id/membersFragment" />
-    </fragment>
+        android:id="@+id/memberListFragment"
+        android:name="com.example.parlament_app.MemberListFragment"
+        android:label="fragment_member_list"
+        tools:layout="@layout/fragment_member_list" />
 </navigation>

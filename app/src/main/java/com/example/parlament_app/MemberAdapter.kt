@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parlament_app.databinding.ItemPartiesBinding
 
 class MemberAdapter (val members: List<String>) : RecyclerView.Adapter<MemberAdapter.MemberViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
@@ -22,12 +21,11 @@ class MemberAdapter (val members: List<String>) : RecyclerView.Adapter<MemberAda
         holder.itemView.findViewById<TextView>(R.id.member_text_view).apply {
             text = members[position]
             setOnClickListener {
-                val action = PartiesFragmentDirections.actionPartiesFragmentToMembersFragment()
+                val action = MembersFragmentDirections.actionMembersFragmentToPartiesFragment()
                 it.findNavController().navigate(action)
             }
         }
     }
     class MemberViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-
     }
 }
