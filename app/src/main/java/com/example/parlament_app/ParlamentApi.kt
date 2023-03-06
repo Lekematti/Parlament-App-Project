@@ -1,3 +1,7 @@
+// 15.2.2023
+// Leo Koskimäki
+// 2201352
+
 package com.example.parlament_app
 
 import com.squareup.moshi.Moshi
@@ -8,15 +12,18 @@ import retrofit2.http.GET
 
 private const val BASE_URL = "https://users.metropolia.fi/~peterh/"
 
+//Moshi to make json into kotlin
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
+//retrofit to get json from the internet
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
+//API Service to get MembesOfParliament list
 interface ParlamentApiService {
     @GET("seating.json")
     suspend fun  getParlamentList(): List<MemberOfParliament>

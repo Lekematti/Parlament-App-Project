@@ -1,3 +1,8 @@
+// 5.3.2023
+// Leo Koskimäki
+// 2201352
+// An adapter for the recycleView
+// that is used in the MemberListFragment
 package com.example.parlament_app
 
 import android.view.LayoutInflater
@@ -16,6 +21,7 @@ class MemberListAdapter (private val members: List<String>) : RecyclerView.Adapt
         return members.size
     }
 
+    // ViewHolder for the text view that is in item_member_list.xml
     override fun onBindViewHolder(holder: MemberListViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.MemberListTextView).apply {
             text = members[position]

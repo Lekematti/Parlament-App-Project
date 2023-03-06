@@ -1,3 +1,8 @@
+// 15.2.2023
+// Leo Koskimäki
+// 2201352
+// MembersFragment contains binding, viewModel and viewModelFactory
+// for everything that is in fragment_members.xml
 package com.example.parlament_app
 
 import android.os.Bundle
@@ -23,9 +28,10 @@ class MembersFragment : Fragment() {
         viewModelFactory = MemberActivityViewModelFactory(args.party)
         viewModel = ViewModelProvider(this, viewModelFactory)[MemberActivityViewModel::class.java]
         binding = FragmentMembersBinding.inflate(layoutInflater)
+        //layoutManager for membersrecycle that is used in fragment_members.xml
         binding.membersrecycle.layoutManager = LinearLayoutManager(context)
-
         viewModel.members.observe(viewLifecycleOwner){
+            //membersrecycle getting the MemberAdapter
             binding.membersrecycle.adapter = MemberAdapter(it)
         }
         // Inflate the layout for this fragment
@@ -33,7 +39,7 @@ class MembersFragment : Fragment() {
     }
 }
 class MemberActivityViewModel(party: String): ViewModel() {
-    //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
+    //Getting a LiveData List from the PalamentRepository
     var members: LiveData<List<String>> = Transformations.map(ParlamentRepository.getMembers(party)){
         it.map {"${it.seatNumber}. ${it.firstname} ${it.lastname}: ${it.party}"}
     }

@@ -1,3 +1,7 @@
+// 20.2.2023
+// Leo Koskimäki
+// 2201352
+// MyApp is used in ParlamentDatabase. Gives context.
 package com.example.parlament_app
 
 import android.app.Application

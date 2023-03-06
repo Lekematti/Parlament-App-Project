@@ -1,3 +1,7 @@
+// 3.3.2023
+// Leo Koskimäki
+// 2201352
+// Repository used for getting data from Dao
 package com.example.parlament_app
 
 import androidx.lifecycle.LiveData

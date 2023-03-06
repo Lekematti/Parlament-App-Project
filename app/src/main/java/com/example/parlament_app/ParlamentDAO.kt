@@ -1,3 +1,7 @@
+// 3.3.2023
+// Leo Koskimäki
+// 2201352
+
 package com.example.parlament_app
 
 import androidx.lifecycle.LiveData
@@ -14,6 +18,8 @@ data class MemberOfParliament (
     val minister: Boolean = false,
     val pictureUrl: String = ""
 )
+
+//DAO that contains the sql and functions to get data
 @Dao
 interface MemberOfParliamentDAO{
     @Insert(onConflict = OnConflictStrategy.REPLACE)

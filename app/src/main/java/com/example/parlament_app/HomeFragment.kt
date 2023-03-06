@@ -1,3 +1,9 @@
+// 15.2.2023
+// Leo Koskimäki
+// 2201352
+// HomeFragment contains binding and ViewModel
+// for everything that is in fragment_home.xml
+// and some other stuff
 package com.example.parlament_app
 
 import android.os.Bundle
@@ -12,7 +18,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.parlament_app.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
-
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -30,15 +35,17 @@ class HomeFragment : Fragment() {
         binding.Bparties.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_partiesFragment)
             viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-
         }
         // A OnClickListener for the Member list button. Used for moving to the MemberList Fragment
         binding.BMemberList.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_memberListFragment)
             viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         }
+        // Inflate the layout for this fragment
         return binding.root
     }
+
+    //The viewModel.readMembers() is for getting the data when first opening the app or if the data is wiped
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.readMembers()
@@ -48,9 +55,10 @@ class HomeFragment : Fragment() {
     }
 }
 class MainActivityViewModel: ViewModel() {
+    // gets a list from ParliamentDAO.kt. List is MutableLiveData
     var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    //var members = ParliamentDatabase.getInstance().memberOfParliamentDAO.getAll()
 
+    // function readMembers is used to get data. It gets it from the API and database
     fun readMembers() {
         viewModelScope.launch {
             try {
