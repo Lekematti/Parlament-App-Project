@@ -27,12 +27,10 @@ class PartiesFragment : Fragment() {
         viewModel.parties.observe(viewLifecycleOwner){
             binding.recycleparties.adapter = PartiesAdapter(it)
         }
-
         return binding.root
     }
 }
 class PartiesActivityViewModel: ViewModel() {
-    //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
     var parties: LiveData<List<String>> = Transformations.map(ParlamentRepository.logData){
         it.map { it.party }.toSortedSet().toList()
     }

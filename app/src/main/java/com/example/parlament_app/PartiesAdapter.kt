@@ -12,11 +12,9 @@ class PartiesAdapter(private val parties: List<String>) : RecyclerView.Adapter<P
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_parties, parent, false)
             return PartiesViewHolder(view)
         }
-
         override fun getItemCount(): Int {
             return parties.size
         }
-
         override fun onBindViewHolder(holder: PartiesViewHolder, position: Int) {
             holder.itemView.findViewById<TextView>(R.id.party_text_view).apply {
                 text = parties[position]

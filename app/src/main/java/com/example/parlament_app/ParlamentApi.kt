@@ -21,7 +21,6 @@ interface ParlamentApiService {
     @GET("seating.json")
     suspend fun  getParlamentList(): List<MemberOfParliament>
 }
-
 object ParlamentApi {
     val retrofitService : ParlamentApiService by lazy {
         retrofit.create(ParlamentApiService::class.java) }

@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [MemberOfParliament::class], version = 5, exportSchema = false)
 
-abstract class ParlamentDatabase: RoomDatabase() {
+abstract class ParlamentDatabase() : RoomDatabase() {
     abstract val memberOfParliamentDAO: MemberOfParliamentDAO
     companion object {
         @Volatile
@@ -15,7 +15,7 @@ abstract class ParlamentDatabase: RoomDatabase() {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {
-                    instance = Room.databaseBuilder(MyApp.appContext, ParlamentDatabase::class.java,"ops_database")
+                    instance = Room.databaseBuilder(MyApp.appContext, ParlamentDatabase::class.java,"parliament_database")
                         .fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }

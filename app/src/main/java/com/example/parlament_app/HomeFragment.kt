@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.example.parlament_app.databinding.FragmentHomeBinding
 import kotlinx.coroutines.launch
@@ -38,7 +41,6 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.readMembers()
         viewModel.member.observe(viewLifecycleOwner) {
             println("member changed")
@@ -58,7 +60,7 @@ class MainActivityViewModel: ViewModel() {
                 member.value?.forEach {
                     dao.insert(it)
                 }
-                println("Written to database")
+                println("Members written to database")
             } catch (e: Exception) {
                 println("No luck in reading members from parliament: $e")
             }

@@ -20,10 +20,6 @@ class MemberAdapter (private val members: List<String>) : RecyclerView.Adapter<M
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.member_text_view).apply {
             text = members[position]
-            setOnClickListener {
-                val action = MembersFragmentDirections.actionMembersFragmentToPartiesFragment()
-                it.findNavController().navigate(action)
-            }
         }
     }
     class MemberViewHolder (view: View) : RecyclerView.ViewHolder(view)

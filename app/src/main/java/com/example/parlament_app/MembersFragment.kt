@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parlament_app.databinding.FragmentMembersBinding
 
-
 class MembersFragment : Fragment() {
     private lateinit var binding: FragmentMembersBinding
     private lateinit var viewModel: MemberActivityViewModel
@@ -23,9 +22,9 @@ class MembersFragment : Fragment() {
         Log.d("Hyvin toimii", args.party)
         viewModelFactory = MemberActivityViewModelFactory(args.party)
         viewModel = ViewModelProvider(this, viewModelFactory)[MemberActivityViewModel::class.java]
-
         binding = FragmentMembersBinding.inflate(layoutInflater)
         binding.membersrecycle.layoutManager = LinearLayoutManager(context)
+
         viewModel.members.observe(viewLifecycleOwner){
             binding.membersrecycle.adapter = MemberAdapter(it)
         }
@@ -36,7 +35,7 @@ class MembersFragment : Fragment() {
 class MemberActivityViewModel(party: String): ViewModel() {
     //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
     var members: LiveData<List<String>> = Transformations.map(ParlamentRepository.getMembers(party)){
-        it.map { "${it.firstname} ${it.lastname}" }.distinct()
+        it.map {"${it.seatNumber}. ${it.firstname} ${it.lastname}: ${it.party}"}
     }
 }
 class MemberActivityViewModelFactory(private val party: String): ViewModelProvider.Factory {

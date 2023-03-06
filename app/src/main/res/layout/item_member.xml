@@ -7,8 +7,7 @@
 
     <TextView
         android:background="@drawable/rounded_corners"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6.5mm"
         android:id="@+id/member_text_view"
         android:layout_width="350dp"
         android:layout_height="30dp"
