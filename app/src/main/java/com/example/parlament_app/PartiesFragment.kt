@@ -33,7 +33,7 @@ class PartiesFragment : Fragment() {
 }
 class PartiesActivityViewModel: ViewModel() {
     //var member: MutableLiveData<List<MemberOfParliament>> = MutableLiveData()
-    var parties: LiveData<List<String>> = Transformations.map(ParlamentDatabase.getInstance().memberOfParliamentDAO.getAll()){
+    var parties: LiveData<List<String>> = Transformations.map(ParlamentRepository.logData){
         it.map { it.party }.toSortedSet().toList()
     }
 }

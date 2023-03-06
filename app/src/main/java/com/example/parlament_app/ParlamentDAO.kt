@@ -20,6 +20,8 @@ interface MemberOfParliamentDAO{
     suspend fun insert(entry: MemberOfParliament)
     @Query("select * from MemberOfParliament")
     fun getAll(): LiveData<List<MemberOfParliament>>
+    @Query("select * from MemberOfParliament where party = :party")
+    fun getMembers(party: String): LiveData<List<MemberOfParliament>>
     //@Query("select * from MemberOfParliament where timestamp > :key")
     //fun getAllSince(key: Long): LiveData<List<MemberOfParliament>>
     //@Query("SELECT * FROM MembersOfParliament WHERE party = :String")

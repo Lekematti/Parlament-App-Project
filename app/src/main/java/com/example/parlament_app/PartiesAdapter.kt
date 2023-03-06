@@ -20,8 +20,9 @@ class PartiesAdapter(private val parties: List<String>) : RecyclerView.Adapter<P
         override fun onBindViewHolder(holder: PartiesViewHolder, position: Int) {
             holder.itemView.findViewById<TextView>(R.id.party_text_view).apply {
                 text = parties[position]
+                val party = text.toString()
                 setOnClickListener {
-                    val action = PartiesFragmentDirections.actionPartiesFragmentToMembersFragment()
+                    val action = PartiesFragmentDirections.actionPartiesFragmentToMembersFragment(party)
                     it.findNavController().navigate(action)
                 }
             }

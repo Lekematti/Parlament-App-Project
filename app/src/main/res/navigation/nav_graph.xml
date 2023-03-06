@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_membersFragment_to_partiesFragment"
             app:destination="@id/partiesFragment" />
+        <argument
+            android:name="party"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/memberListFragment"
