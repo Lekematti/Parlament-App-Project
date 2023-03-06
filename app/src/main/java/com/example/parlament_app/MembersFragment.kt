@@ -29,7 +29,6 @@ class MembersFragment : Fragment() {
         viewModel.members.observe(viewLifecycleOwner){
             binding.membersrecycle.adapter = MemberAdapter(it)
         }
-
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -39,8 +38,6 @@ class MemberActivityViewModel(party: String): ViewModel() {
     var members: LiveData<List<String>> = Transformations.map(ParlamentRepository.getMembers(party)){
         it.map { "${it.firstname} ${it.lastname}" }.distinct()
     }
-
-
 }
 class MemberActivityViewModelFactory(private val party: String): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
