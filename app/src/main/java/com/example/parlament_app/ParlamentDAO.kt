@@ -1,7 +1,9 @@
 // 3.3.2023
 // Leo Koskimäki
 // 2201352
-
+// ParlamentDAO contains a Entity and Dao.
+// The ParlamentDatabase uses these to get data.
+// Also ParlamentRepository uses this.
 package com.example.parlament_app
 
 import androidx.lifecycle.LiveData

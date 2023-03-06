@@ -3,7 +3,7 @@
 // 2201352
 // HomeFragment contains binding and ViewModel
 // for everything that is in fragment_home.xml
-// and some other stuff
+// and some other stuff.
 package com.example.parlament_app
 
 import android.os.Bundle

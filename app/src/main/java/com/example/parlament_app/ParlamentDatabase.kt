@@ -1,7 +1,7 @@
 // 2.3.2023
 // Leo Koskimäki
 // 2201352
-
+// This is the database for the project
 package com.example.parlament_app
 
 import androidx.room.Database

@@ -1,7 +1,8 @@
 // 15.2.2023
 // Leo Koskimäki
 // 2201352
-
+// ParlamentApi has a moshi & retrofit for getting and reading
+// the json file that comes from the internet.
 package com.example.parlament_app
 
 import com.squareup.moshi.Moshi

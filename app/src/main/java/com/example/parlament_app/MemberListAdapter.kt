@@ -2,7 +2,7 @@
 // Leo Koskimäki
 // 2201352
 // An adapter for the recycleView
-// that is used in the MemberListFragment
+// that is used in the MemberListFragment.
 package com.example.parlament_app
 
 import android.view.LayoutInflater
